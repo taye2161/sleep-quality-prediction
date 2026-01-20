@@ -26,23 +26,23 @@ st.markdown('---')
 st.markdown('📊 Dataset Info')
 
 try:
-    df = pd.read_csv('../data/processed/Sleep_health_and_lifestyle_dataset_cleaned.csv')
+    df = pd.read_csv('data/Sleep_health_and_lifestyle_dataset_cleaned.csv')
 
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        st.metric("Patienten", len(df))
+        st.metric("Test Subjects", len(df))
 
     with col2:
         st.metric("Features", len(df.columns))
 
     with col3:
-        sick = df['condition'].sum() if 'condition' in df.columns else 0
-        st.metric("Mit Herzkrankheit", sick)
+        sick = df['Sleep Disorder'].sum() if 'Sleep Disorder' in df.columns else 0
+        st.metric("with Sleep Disorder", sick)
 
     with col4:
-        avg_age = df['age'].mean() if 'age' in df.columns else 0
-        st.metric("Ø Alter", f"{avg_age:.1f}")
+        avg_age = df['Age'].mean() if 'Age' in df.columns else 0
+        st.metric("Ø Age", f"{avg_age:.1f}")
 
     with st.expander("📋 Daten-Vorschau"):
         st.dataframe(df.head())
@@ -50,3 +50,7 @@ try:
 except FileNotFoundError:
     st.warning("⚠️ Datei nicht gefunden: `Sleep_health_and_lifestyle_dataset_cleaned.csv`")
     st.info("Bitte legen Sie die CSV-Datei in den `data/` Ordner.")
+
+st.markdown('---')
+st.caption("DataPy WiSe25/26 - Sleep Quality Prediction")
+
