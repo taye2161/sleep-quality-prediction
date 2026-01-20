@@ -44,7 +44,7 @@ try:
         avg_age = df['Age'].mean() if 'Age' in df.columns else 0
         st.metric("Ø Age", f"{avg_age:.1f}")
 
-    with st.expander("📋 Daten-Vorschau"):
+    with st.expander("📋 Data Preview"):
         st.dataframe(df.head())
 
 except FileNotFoundError:
