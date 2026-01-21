@@ -23,6 +23,9 @@ def load_data():
 try:
     df = load_data()
 
+    if "model" not in st.session_state:
+        st.session_state.model = None
+
     categorical_cols = ['Gender', 'Occupation', 'BMI Category']
     df = df.drop(columns=categorical_cols, errors='ignore')
 
@@ -57,13 +60,15 @@ try:
             train_button = st.button("🚀 Start Training", type="primary")
 
         with col2:
-            model_nicht_trainiert = True
+            
             if train_button:
                 with st.spinner("Trainiere Modell..."):
                     # Train/Test Split
                     X_train, X_test, y_train, y_test = train_test_split(
                         X, y, test_size=test_size, random_state=42
                     )
+
+                    st.session_state.feature_cols = X_train.columns.tolist()
 
                     if model_choice == "Random Forest":
                         model = RandomForestRegressor(n_estimators=100, max_depth=5, min_samples_leaf=5, random_state=42)
@@ -105,14 +110,14 @@ try:
                         }).reset_index(drop=True)
                         st.dataframe(comparison)
 
-                    model_nicht_trainiert = False
+                    
 
 
     with tab2:
         st.subheader("Individual Prediction")
         st.info("💡 Fill in your own data for a Prediction")
 
-        if model_nicht_trainiert:
+        if st.session_state.model is None:
             st.warning("⚠️ **Hinweis:** Diese Funktion benötigt ein trainiertes Modell. "
                    "Bitte trainieren Sie erst ein Modell im Training-Tab!")
             
@@ -150,6 +155,9 @@ try:
                         "Heart Rate": [heart_rate],
                         "Daily Steps": [daily_steps]
                     })
+
+                    input_data = input_data[st.session_state.feature_cols]
+
                     prediction = model.predict(input_data)
                     st.success(f"🔮 Vorhersage der Schlafqualität: {prediction[0]:.2f}")
 
