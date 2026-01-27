@@ -50,7 +50,7 @@ try:
                     center=0, square=True, ax=ax)
         ax.set_title('Corralation-Matrix')
         st.pyplot(fig)
-        
+
 
     with tab3:
         st.subheader('Feature Comparisons')
@@ -63,11 +63,28 @@ try:
         with col2:
             y_feature = st.selectbox("Y-Axis:", numeric_cols, index=1)
 
-        color_by = 'Quality of Sleep' if 'Quality of Sleep' in df.columns else None
-        fig = px.scatter(df, x=x_feature, y=y_feature, color=color_by,
-                         title=f'{y_feature} vs {x_feature}',
-                         hover_data=df.columns)
-        st.plotly_chart(fig, use_container_width=True)
+        #color_by = 'Quality of Sleep' if 'Quality of Sleep' in df.columns else None
+        #fig = px.scatter(df, x=x_feature, y=y_feature, color=color_by,
+        #                 title=f'{y_feature} vs {x_feature}',
+        #                 hover_data=df.columns)
+        #st.plotly_chart(fig, use_container_width=True)
+
+        fig, ax = plt.subplots(figsize=(8, 6))
+
+        scatter = ax.scatter(
+            df[x_feature],
+            df[y_feature],
+            c=df['Quality of Sleep'],
+            alpha=0.7
+        )
+        fig.colorbar(scatter, ax=ax, label='Quality of Sleep')
+
+        ax.set_xlabel(x_feature)
+        ax.set_ylabel(y_feature)
+        ax.set_title(f'{y_feature} vs {x_feature}')
+        ax.grid(True)
+
+        st.pyplot(fig)
 
 
 
