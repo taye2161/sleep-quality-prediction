@@ -9,8 +9,7 @@ st.markdown('### Data Analysis and ML Prediction')
 st.markdown('---')
 
 st.markdown("""
-## Welcome!
-
+            
 This App analyzes the Sleep health and lifestyle Dataset and makes predictions about your Sleep Quality.
 
 ### Pages:
