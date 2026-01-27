@@ -11,9 +11,7 @@ st.markdown('---')
 st.markdown("""
             
 This App analyzes the Sleep health and lifestyle Dataset and makes predictions about your Sleep Quality.
-
-### Pages:
-
+            
 1. **Data Exploration** - inspecting and cleaning the dataset
 2. **Visualisation** - Explorative Data Analysis (EDA)
 3. **ML Prediction** - Machine Learning Prediction
