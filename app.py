@@ -43,8 +43,7 @@ try:
         avg_age = df['Age'].mean() if 'Age' in df.columns else 0
         st.metric("Ø Age", f"{avg_age:.1f}")
 
-    with st.expander("📋 Data Preview"):
-        st.dataframe(df.head())
+    st.dataframe(df.head())
 
 except FileNotFoundError:
     st.warning("⚠️ Datei nicht gefunden: `Sleep_health_and_lifestyle_dataset_cleaned.csv`")
