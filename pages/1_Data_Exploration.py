@@ -16,9 +16,8 @@ def load_data():
 
 try:
     df = load_data()
-    st.success(f"✅ Data loaded successfully: {len(df)} rows, {len(df.columns)} columns")
-
-    tab1, tab2, tab3 = st.tabs(["📋 Overview", "🔍 Data Quality", "📊 Statistics"])
+    
+    tab1, tab2 = st.tabs(["📋 Overview", "📊 Statistics"])
 
     with tab1:
         st.subheader("Dataset Overview")
@@ -46,19 +45,6 @@ try:
             }))
 
     with tab2:
-        st.subheader("Data Quality")
-
-        col1, col2 = st.columns([1, 1])
-
-        with col1:
-            st.markdown('#### Missing values')
-            st.success("✅ No missing values")
-
-        with col2:
-            st.markdown('#### Duplicates')
-            st.success("✅ No duplicates")
-
-    with tab3:
         st.subheader('Statistical summary')
         st.dataframe(df.describe(), use_container_width=True)
 
