@@ -16,33 +16,31 @@ def load_data():
 
 try:
     df = load_data()
-    
+
     tab1, tab2 = st.tabs(["📋 Overview", "📊 Statistics"])
 
     with tab1:
         st.subheader("Dataset Overview")
 
-        col1, col2 = st.columns([1, 1])
+        #col1, col2 = st.columns([1, 1])
 
+        st.markdown("#### Data Preview")
+        n_rows = st.slider("Number of rows", 5, 50, 10)
+        st.dataframe(df.head(n_rows), use_container_width=True)
+
+        st.markdown("#### Info")
+        col1, col2 = st.columns([1, 3])
         with col1:
-            st.markdown("#### Data Preview")
-            n_rows = st.slider("Number of rows", 5, 50, 10)
-            st.dataframe(df.head(n_rows), use_container_width=True)
+            st.write(f"**Shape:** {df.shape}")
 
         with col2:
-            st.markdown("#### Info")
-            col1, col2 = st.columns([1, 3])
-            with col1:
-                st.write(f"**Shape:** {df.shape}")
+            st.write(f"**Rows:** {len(df.columns)}")
 
-            with col2:
-                st.write(f"**Rows:** {len(df.columns)}")
-
-            st.write(f'**Datatypes:**')
-            st.dataframe(pd.DataFrame({
-                'Type': df.dtypes,
-                'Count': df.count()
-            }))
+        st.write(f'**Datatypes:**')
+        st.dataframe(pd.DataFrame({
+            'Type': df.dtypes,
+            'Count': df.count()
+        }))
 
     with tab2:
         st.subheader('Statistical summary')
