@@ -12,7 +12,7 @@ import seaborn as sns
 st.set_page_config(page_title="ML Prediction", page_icon="📈", layout="wide")
 
 st.title('🤖 Machine Learning Prediction')
-st.markdown('Week 9: Predicting Quality of upcoming Sleep')
+st.markdown('Predicting Quality of upcoming Sleep')
 
 st.markdown('---')
 

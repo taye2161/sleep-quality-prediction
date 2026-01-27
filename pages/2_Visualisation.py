@@ -7,7 +7,7 @@ import plotly.express as px
 st.set_page_config(page_title="Data Visualisation", page_icon="📈", layout="wide")
 
 st.title('📈 Data Visualisation')
-st.markdown("Week 8: Explorative Data Analysis (EDA)")
+st.markdown("Explorative Data Analysis (EDA)")
 
 st.markdown('---')
 

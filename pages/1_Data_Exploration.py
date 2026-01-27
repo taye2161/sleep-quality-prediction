@@ -5,7 +5,7 @@ import numpy as np
 st.set_page_config(page_title="Data Exploration", page_icon="📊", layout="wide")
 
 st.title("📊 Data Exploration")
-st.markdown("Week 7: Data Cleaning and Inspection")
+st.markdown("Data Cleaning and Inspection")
 
 st.markdown("---")
 
@@ -21,9 +21,7 @@ try:
 
     with tab1:
         st.subheader("Dataset Overview")
-
-        #col1, col2 = st.columns([1, 1])
-
+        
         st.markdown("#### Data Preview")
         n_rows = st.slider("Number of rows", 5, 50, 10)
         st.dataframe(df.head(n_rows), use_container_width=True)
