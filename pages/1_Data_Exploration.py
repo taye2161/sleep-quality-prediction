@@ -21,9 +21,9 @@ try:
 
     with tab1:
         st.subheader("Dataset Overview")
-        
+
         st.markdown("#### Data Preview")
-        n_rows = st.slider("Number of rows", 5, 50, 10)
+        n_rows = st.slider("Number of rows", 5, 374, 10)
         st.dataframe(df.head(n_rows), use_container_width=True)
 
         st.markdown("#### Info")

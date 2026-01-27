@@ -44,8 +44,8 @@ try:
     st.dataframe(df.head())
 
 except FileNotFoundError:
-    st.warning("⚠️ Datei nicht gefunden: `Sleep_health_and_lifestyle_dataset_cleaned.csv`")
-    st.info("Bitte legen Sie die CSV-Datei in den `data/` Ordner.")
+    st.warning("❌ File not found: `data/Sleep_health_and_lifestyle_dataset_cleaned.csv`")
+    st.info("Please put the CSV-file in the `data/` directory.")
 
 st.markdown('---')
 st.caption("DataPy WiSe25/26 - Sleep Quality Prediction")
