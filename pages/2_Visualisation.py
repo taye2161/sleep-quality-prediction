@@ -50,11 +50,7 @@ try:
                     center=0, square=True, ax=ax)
         ax.set_title('Corralation-Matrix')
         st.pyplot(fig)
-
-        if 'Quality of Sleep' in corr.columns:
-            st.markdown("#### Top correlation with target variable")
-            target_corr = corr['Quality of Sleep'].abs().sort_values(ascending=False)[1:6]
-            st.bar_chart(target_corr)
+        
 
     with tab3:
         st.subheader('Feature Comparisons')
