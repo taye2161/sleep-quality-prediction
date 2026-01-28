@@ -37,7 +37,7 @@ try:
         st.error("❌ Target-variable 'Quality of Sleep' not found!")
         st.stop()
 
-    X = df[feature_cols].drop(columns=['Systolic', 'Diastolic'])
+    X = df[feature_cols].drop(columns=['Systolic', 'Diastolic', 'Daily Steps', 'Physical Activity Level'])
     y = df[target_col]
 
     tab1, tab2 = st.tabs(["🎯 Training & Evaluation", "🔮 Prediction"])
@@ -129,15 +129,15 @@ try:
             with col1:
                 age = st.number_input("Age", 20, 100, 50)
                 sleep_duration = st.number_input("Sleep Duration", 3.0, 10.0, 5.0, 0.1)
-                sleep_disorder = st.selectbox("Sleep Disorder", options=[0, 1], format_func=lambda x: "No Disorder" if x==0 else "Has Disorder")
+                
 
             with col2:
-                phy_act_lvl = st.number_input("Physical Activity Level", 30, 90, 50, 1)
+                sleep_disorder = st.selectbox("Sleep Disorder", options=[0, 1], format_func=lambda x: "No Disorder" if x==0 else "Has Disorder")
                 stress_lvl = st.number_input("Stress Level", 3, 9, 5, 1)
 
             with col3:
                 heart_rate = st.number_input("Heart Rate", 60, 90, 70, 1)
-                daily_steps = st.number_input("Daily Steps", 1000, 20000, 2000, 1)
+                
 
             submitted = st.form_submit_button("🔮 Prediction")
 
@@ -150,10 +150,8 @@ try:
                         "Age": [age],
                         "Sleep Duration": [sleep_duration],
                         "Sleep Disorder": [sleep_disorder],
-                        "Physical Activity Level": [phy_act_lvl],
                         "Stress Level": [stress_lvl],
                         "Heart Rate": [heart_rate],
-                        "Daily Steps": [daily_steps]
                     })
 
                     input_data = input_data[st.session_state.feature_cols]
